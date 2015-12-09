@@ -84,8 +84,11 @@ The `SmartForm.Input` component will take care of any validation and, in case of
 * `requiredMsg`: {String} The message to display when the field is required but empty
 * `linkedTo`: {String} **[required]** The form element the error should be linked to, in the format of `"form-id.element-id"`
 * `onError`: {Function} A callback which is invoked in case of error, and is passed two arguments:
-	* `errorReason`: {Symbol} The reason for the error. Either `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
-	* `value`: {String} The value of the field
+  * `errorReason`: {Symbol} The reason for the error. Either `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
+  * `value`: {String} The value of the field
+* `onValidate`: {Function} A callback which is invoked with the error state for every validation, and is passed two arguments:
+  * `errorReason`: {Symbol} The reason for the error. Either false (no error) or `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
+  * `value`: {String} The value of the field
 
 ## Future Plans (contributions welcome!)
 * The ability to fire a callback as soon as the user tabs out of a field (e.g. to check if a username is available)

@@ -26,6 +26,13 @@ SmartForm.Error = React.createClass({
       this.props.onError(errorReason, formState.value);
     }
 
+    if(this.props.onValidate) {
+      this.props.onValidate(
+        (errorReason !== SmartForm.ERROR_NONE && errorReason),
+        (formState && formState.value)
+      );
+    }
+
     return {errorMessage}
   },
 
