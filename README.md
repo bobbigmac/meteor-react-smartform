@@ -103,5 +103,4 @@ The `SmartForm.Input` component will take care of any validation and, in case of
   * `value`: {String} The value of the field
 
 ## Future Plans (contributions welcome!)
-* The ability to fire a callback as soon as the user tabs out of a field (e.g. to check if a username is available)
 * More input types (select, textarea, etc)
