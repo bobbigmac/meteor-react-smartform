@@ -57,6 +57,16 @@ SmartForm.Input = React.createClass({
       formId: this.props.formId,
       id: this.props.id
     });
+
+    let handler = (event.type === 'blur' && this.props.onBlur) || 
+                  (event.type === 'focus' && this.props.onFocus);
+    if(handler) {
+      handler(
+        (this.state && this.state.errorReason !== SmartForm.ERROR_NONE && this.state.errorReason),
+        (this.state && this.state.value),
+        this.props
+      );
+    }
   },
 
   handleChange({target}) {
@@ -68,15 +78,23 @@ SmartForm.Input = React.createClass({
       validations: this.validations,
       value: target.value
     });
+
+    if(this.props.onChange && target.value !== this.state.value) {
+      this.props.onChange(
+        (this.state && this.state.errorReason !== SmartForm.ERROR_NONE && this.state.errorReason),
+        target.value,
+        this.props
+      );
+    }
   },
 
   render() {
     return <input
+      value={this.state.value}
+      {...this.props}
       onBlur={this.handleBlurOrFocus}
       onChange={this.handleChange}
       onFocus={this.handleBlurOrFocus}
-      value={this.state.value}
-      {...this.props}
     />
   }
 });
