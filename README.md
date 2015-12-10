@@ -62,6 +62,18 @@ The `SmartForm.Input` component will take care of any validation and, in case of
 	* `"zip"` (US 5-digit ZIP)
 * `weakValidation`: {Boolean} If this property is present, the field will only perform a weak validation. In other words, if the value in the field does not pass validation against the `validateAs` field, the `SmartForm.Error` component will still show its `invalidMsg` message, but the field will remain in a valid state, and `SmartForm.ERROR_SUSPECT` will be set as the field error instead of `SmartForm.ERROR_INVALID`. Weak validation is recommended for fields such as email address, where standards might change in the future (e.g. we didn't used to have domain suffixes greater than three characters!)
 * `defaultValue`: {String} A default value for the input field
+* `onBlur`: {Function} A callback which is invoked when the user leaves the input, and is passed three arguments:
+  * `errorReason`: {Symbol} The reason for any error. Either false (no error) or `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
+  * `value`: {String} The value of the field
+  * `props`: {Object} The props passed to the input component
+* `onFocus`: {Function} A callback which is invoked when the user enters the input, and is passed three arguments:
+  * `errorReason`: {Symbol} The reason for any error. Either false (no error) or `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
+  * `value`: {String} The value of the field
+  * `props`: {Object} The props passed to the input component
+* `onChange`: {Function} A callback which is invoked when the user changes the input value, and is passed three arguments:
+  * `errorReason`: {Symbol} The reason for any error. Either false (no error) or `SmartForm.ERROR_INVALID`, `SmartForm.ERROR_SUSPECT`, or `SmartForm.ERROR_REQUIRED`
+  * `value`: {String} The value of the field
+  * `props`: {Object} The props passed to the input component
 
 ### SmartForm.Checkbox
 
