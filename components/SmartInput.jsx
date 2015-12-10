@@ -37,12 +37,14 @@ SmartForm.Input = React.createClass({
       value: this.state.value
     });
 
-    FormDispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
-      errorReason: this.state && this.state.errorReason,
-      event: 'blur',
-      formId: this.props.formId,
-      id: this.props.id
-    });
+    if(!this.props.defaultValue && !this.props.value) {
+      FormDispatcher.dispatch('SMARTFORM_INPUT_BLURORFOCUS', {
+        errorReason: this.state && this.state.errorReason,
+        event: 'blur',
+        formId: this.props.formId,
+        id: this.props.id
+      });
+    }
   },
 
   handleBlurOrFocus(event) {
